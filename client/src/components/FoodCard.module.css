@@ -1,0 +1,53 @@
+.food-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.food-card h2 {
+  color: #4caf50;
+  margin-bottom: 15px;
+}
+
+.nutrients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.nutrients span {
+  background: #f0f9f0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.details p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.info {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+@media (min-width: 768px) {
+  .food-card {
+    max-width: 30%;
+    margin: 0 auto 30px;
+  }
+}
