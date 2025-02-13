@@ -1,0 +1,56 @@
+.testimonials {
+  padding: 60px 20px;
+  background-color: #f0f9f0;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.testimonial-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.testimonial-card p {
+  color: #555;
+  font-size: 1rem;
+  margin: 20px 0;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.testimonial-card svg {
+  margin: 0 auto;
+}
+
+.testimonial-card h4 {
+  color: #222;
+  font-weight: 600;
+}
+
+/* Desktop view - make it behave like a slider */
+@media (min-width: 768px) {
+  .testimonial-slider {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    width: 30%;
+  }
+}
