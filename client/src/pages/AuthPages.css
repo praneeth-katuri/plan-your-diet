@@ -1,0 +1,84 @@
+.auth-section {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.auth-overlay {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 60px 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  color: #333;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #4caf50;
+}
+
+.auth-section form input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #ffb300;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #e09d00;
+}
+
+.small-text {
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+.auth-section a {
+  color: #4caf50;
+  text-decoration: underline;
+}
+
+.forgot-link {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 1rem;
+}
+
+.forgot-link a {
+  color: #4caf50;
+  text-decoration: underline;
+}
+
+.active {
+  color: #4caf50;
+}
+
+.role-toggle {
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.role-toggle span {
+  padding: 0 1rem;
+}
