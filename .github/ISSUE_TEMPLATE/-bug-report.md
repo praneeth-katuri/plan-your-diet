@@ -1,6 +1,6 @@
 ---
 name: " Bug Report"
-about: " Report an error, crash, or wrong result anywhere in the ML stack."
+about: " Report an error or problem anywhere in the project."
 title: " [BUG] <concise description>"
 labels: bug
 assignees: ''
@@ -9,11 +9,11 @@ assignees: ''
 
 ## Where is the bug?
 
-<!-- e.g. Training, Prediction, Data, Flask API, Build Script, Frontend, Other -->
+<!-- Backend (Node/Express), Frontend (React), Database (MongoDB), API, Deployment, etc. -->
 
 ## What happened?
 
-<!-- Describe the problem in 1-2 sentences. -->
+<!-- Briefly describe the issue. -->
 
 ## Steps to reproduce
 
@@ -21,27 +21,22 @@ assignees: ''
 2. 
 3. 
 
-## What did you expect?
+## Expected behavior
 
 <!-- What should have happened? -->
 
-## What did you get instead?
+## Actual behavior
 
-<!-- Error messages, stack trace, or wrong output. Paste logs/screenshots if possible. -->
+<!-- What actually happened? Include logs, errors, or screenshots. -->
 
 ## Environment
 
 - OS:
-- Python version:
-- Key libraries (scikit-learn, Flask, etc.) versions:
-- Command run (if relevant):
-
-## Dataset/Model info (if relevant)
-
-- Dataset used (file or source):
-- Model/config used:
-- Any data sample/row (optional):
+- Node.js version:
+- npm/yarn version:
+- MongoDB version (if relevant):
+- Browser (if relevant):
 
 ## Anything else?
 
-<!-- Any attempts to fix, extra context, links, etc. -->
+<!-- Any context, configs, links, or attempts to fix. -->
