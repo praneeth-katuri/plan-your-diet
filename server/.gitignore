@@ -13,6 +13,9 @@ dist-ssr
 *.local
 .env
 
+# Prisma generated client
+.prisma/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
