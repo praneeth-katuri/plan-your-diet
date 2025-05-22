@@ -13,16 +13,16 @@ assignees: ''
 
 ## Why is it needed?
 
-<!-- Short reason: What problem does it solve, or what value does it add? -->
+<!-- What problem does it solve? Who benefits? -->
 
 ## How should it work?
 
-<!-- Brief outline of expected behavior, workflow, or API. -->
+<!-- Outline expected behavior, UI/API changes, or workflow. -->
 
 ## Alternatives considered
 
-<!-- List any other approaches or solutions you thought about, if any. -->
+<!-- List any alternative approaches you thought about, if any. -->
 
 ## Anything else?
 
-<!-- Extra context, screenshots, references, etc. -->
+<!-- Extra context, references, or sketches. -->
