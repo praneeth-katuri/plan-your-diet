@@ -14,7 +14,8 @@ dist-ssr
 .env
 
 # Prisma generated client
-.prisma/
+prisma/migrations
+src/generated/prisma/
 
 # Editor directories and files
 .vscode/*
