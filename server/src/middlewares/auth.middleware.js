@@ -22,3 +22,5 @@ const verify = async (req, res, next) => {
     res.status(401).json({ message: "Error Occurred" });
   }
 };
+
+module.exports = verify;
