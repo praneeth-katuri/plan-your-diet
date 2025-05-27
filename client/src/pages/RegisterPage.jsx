@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./AuthPages.css";
 import RegisterBg from "../assets/images/auth_bg.png";
 
@@ -74,7 +75,7 @@ const RegisterPage = () => {
               Register as {role.charAt(0).toUpperCase() + role.slice(1)}
             </button>
             <p className="small-text">
-              Already have an account? <a href="#">Login here</a>
+              Already have an account? <Link to="/login">Login here</Link>
             </p>
           </form>
         </div>
