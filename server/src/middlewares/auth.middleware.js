@@ -4,23 +4,40 @@ const prisma = require("../db/client");
 
 const verify = async (req, res, next) => {
   const authHeader = req.headers.authorization;
-  const accessToken = authHeader.split(" ")[1];
 
-  if (!accessToken) {
+  if (!authHeader?.startsWith("Bearer ")) {
     return res.status(401).json({ message: "No token, authorization denied." });
   }
 
+  const accessToken = authHeader.split(" ")[1];
+
   try {
     const decoded = jwt.verify(accessToken, config.jwt.accessSecret);
-    const user = await prisma.user.findUnique({ where: { id: decoded.id } });
+
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.id },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        age: true,
+        gender: true,
+        height: true,
+        weight: true,
+        goal: true,
+        dietType: true,
+        allergies: true,
+      },
+    });
 
     if (!user) {
-      return res.json({ message: "User not found." });
+      return res.status(404).json({ message: "User not found." });
     }
+
     req.user = user;
     next();
   } catch {
-    res.status(401).json({ message: "Error Occurred" });
+    return res.status(401).json({ message: "Invalid or expired token." });
   }
 };
 
