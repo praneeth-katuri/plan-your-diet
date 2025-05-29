@@ -24,12 +24,34 @@ const login = async ({ email, password }) => {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw new Error("Invalid Credentials");
 
-  return jwt.sign({ id: user.id, email: user.email }, config.jwt.secret, {
-    expiresIn: config.jwt.expiresIn,
+  const accessToken = jwt.sign({ id: user.id }, config.jwt.accessSecret, {
+    expiresIn: config.jwt.accessExpiresIn,
   });
+
+  const refreshToken = jwt.sign({ id: user.id }, config.jwt.refreshSecret, {
+    expiresIn: config.jwt.refreshExpiresIn,
+  });
+
+  return { accessToken, refreshToken };
+};
+
+const getAccessToken = (refreshToken) => {
+  if (!refreshToken) throw new Error("No Token");
+  try {
+    const { id } = jwt.verify(refreshToken, config.jwt.refreshSecret);
+
+    const accessToken = jwt.sign({ id }, config.jwt.accessSecret, {
+      expiresIn: config.jwt.accessExpiresIn || "15m",
+    });
+
+    return accessToken;
+  } catch (error) {
+    throw new Error("Invalid or Expired refresh token");
+  }
 };
 
 module.exports = {
   register,
   login,
+  getAccessToken,
 };
