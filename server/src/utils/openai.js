@@ -5,7 +5,7 @@ const together = new Together({ apiKey: config.openai.apiKey });
 
 async function generateDietPlan(user) {
   const prompt = `
-Create a 1-day vegetarian diet plan for:
+Create a 7-day vegetarian diet plan for:
 - Age: ${user.age}
 - Gender: ${user.gender}
 - Height: ${user.height} cm
@@ -15,22 +15,28 @@ Create a 1-day vegetarian diet plan for:
 - Allergies: ${user.allergies.join(", ") || "none"}
 
 Requirements:
-- 3 meals + 1 snack
-- Total around 2200 calories
-- Include calories + macros for each (protein, carbs, fat)
-
+- 3 meals + 1 snack per day
+- Total around 2200 calories per day
+- Include calories + macros for each meal (protein, carbs, fat)
+- Ensure variety across the 7 days
+- Use "day1", "day2", ..., "day7" instead of weekday names
 
 Instructions:
 - Do not include explanations or comments
 - Do not add any formatting or markdown
 - Output only valid minified JSON
-- JSON should look like this:
-Respond in this format only:
+- JSON structure should be:
 {
-  "meals": [
-    { "name": "Meal name", "time": "breakfast", "calories": 450, "macros": {"protein": 25, "carbs": 40, "fat": 15} }
+  "days": [
+    {
+      "day": "day1",
+      "meals": [
+        { "name": "Meal name", "time": "breakfast", "calories": 450, "macros": {"protein": 25, "carbs": 40, "fat": 15} }
+      ]
+    }
   ]
 }
+Respond in this exact format with all 7 days included.
 `;
 
   const response = await together.chat.completions.create({
