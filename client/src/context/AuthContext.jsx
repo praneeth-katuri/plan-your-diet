@@ -5,7 +5,6 @@ import React, {
   useEffect,
   useCallback,
 } from "react";
-import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import { setupInterceptors } from "../api/axiosInterceptor";
 
@@ -16,8 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(null);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
-  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
   const login = useCallback(async (email, password) => {
     const res = await api.post(
@@ -26,22 +24,36 @@ export const AuthProvider = ({ children }) => {
       { withCredentials: true }
     );
     const token = res.data.accessToken;
+    const userData = res.data.user;
     setAccessToken(token);
+    setUser(userData);
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    localStorage.setItem("hasSession", "true");
     setAuthenticated(true);
   }, []);
 
-  const logout = useCallback(() => {
-    api.post("/auth/logout", {}, { withCredentials: true });
-    setAccessToken(null);
-    setAuthenticated(false);
-    delete api.defaults.headers.common["Authorization"];
-    navigate("/login");
-  }, [navigate]);
+  const logout = useCallback(async () => {
+    try {
+      await api.post("/auth/logout", {}, { withCredentials: true });
+      setAccessToken(null);
+      setUser(null);
+      setAuthenticated(false);
+      delete api.defaults.headers.common["Authorization"];
+      localStorage.removeItem("hasSession");
+    } catch (err) {
+      console.warn("Logout request failed:", err.message);
+    }
+  }, []);
 
-  // token refresh on page
+  // token refresh on page reload
   useEffect(() => {
     const tryRefresh = async () => {
+      const hasSession = localStorage.getItem("hasSession") === "true";
+      if (!hasSession) {
+        setIsLoading(false);
+        return;
+      }
+
       try {
         const res = await api.post(
           "/auth/refresh-token",
@@ -49,13 +61,16 @@ export const AuthProvider = ({ children }) => {
           { withCredentials: true }
         );
         const token = res.data.accessToken;
+        const userData = res.data.user;
         setAccessToken(token);
+        setUser(userData);
         api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         setAuthenticated(true);
         console.log("Token refreshed and set.");
       } catch (err) {
         console.warn("Token refresh failed", err);
         setAuthenticated(false);
+        setUser(null);
       } finally {
         setIsLoading(false);
       }
@@ -77,6 +92,8 @@ export const AuthProvider = ({ children }) => {
         logout,
         isAuthenticated,
         isLoading,
+        user,
+        setUser,
       }}
     >
       {children}
