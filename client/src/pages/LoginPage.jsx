@@ -6,14 +6,12 @@ import "./AuthPages.css";
 import LoginBg from "../assets/images/auth_bg.png";
 
 const LoginPage = () => {
-  const { login, isAuthenticated, isLoading } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  if (isLoading) return <Spinner />;
-
-  if (isAuthenticated) return <Navigate to="/s" />;
+  if (isAuthenticated) return <Navigate to="/" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
