@@ -4,11 +4,9 @@ import { useAuth } from "@/context/AuthContext";
 import api from "@/api/axios";
 import "./AuthPages.css";
 import RegisterBg from "../assets/images/auth_bg.png";
-import Spinner from "@/components/Spinner";
 
 const RegisterPage = () => {
-  const { isAuthenticated, isLoading } = useAuth();
-  const [role, setRole] = useState("member");
+  const { isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,8 +30,6 @@ const RegisterPage = () => {
     });
   };
 
-  if (isLoading) return <Spinner />;
-
   if (isAuthenticated) return <Navigate to="/diet" />;
 
   return (
@@ -44,23 +40,6 @@ const RegisterPage = () => {
       <div className="auth-overlay">
         <div className="auth-card">
           <h1>Create Your Account</h1>
-
-          {/* Role toggle */}
-          <div className="role-toggle">
-            <span
-              className={role === "member" ? "active" : ""}
-              onClick={() => setRole("member")}
-            >
-              Member
-            </span>
-            <span className="separator">|</span>
-            <span
-              className={role === "nutritionist" ? "active" : ""}
-              onClick={() => setRole("nutritionist")}
-            >
-              Nutritionist
-            </span>
-          </div>
 
           <form onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Full Name" required />
@@ -83,7 +62,7 @@ const RegisterPage = () => {
             />
 
             <button type="submit" className="btn btn-primary">
-              Register as {role.charAt(0).toUpperCase() + role.slice(1)}
+              Register
             </button>
             <p className="small-text">
               Already have an account? <Link to="/login">Login here</Link>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "@/api/axios";
 import { useAuth } from "@/context/AuthContext";
@@ -6,56 +6,21 @@ import Spinner from "@/components/Spinner";
 
 const ProfileSetup = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
-
-  const [form, setForm] = useState({
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    goal: "",
-    dietType: "",
-    allergies: "",
-  });
+  const { user, setUser } = useAuth();
+  const allergies = user.allergies.join(", ");
+  const [form, setForm] = useState({ ...user, allergies });
 
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    async function fetchProfile() {
-      setLoading(true);
-      try {
-        const res = await api.get("/user/me");
-        const data = res.data;
-        if (data.age && data.goal && data.height) {
-          navigate("/diet");
-        } else {
-          setForm({
-            age: data.age || "",
-            gender: data.gender || "",
-            height: data.height || "",
-            weight: data.weight || "",
-            goal: data.goal || "",
-            dietType: data.dietType || "",
-            allergies: data.allergies?.join(", ") || "",
-          });
-        }
-        setLoading(false);
-      } catch {
-        navigate("/login");
-      }
-    }
-    if (isAuthenticated) fetchProfile();
-  }, [isAuthenticated, navigate]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const allergiesArray = form.allergies
       ?.split(",")
       .map((allergy) => allergy.trim())
       .filter(Boolean);
 
     try {
+      setLoading(true);
       await api.put("/user/me", {
         ...form,
         age: parseInt(form.age),
@@ -63,7 +28,8 @@ const ProfileSetup = () => {
         weight: parseInt(form.weight),
         allergies: allergiesArray,
       });
-
+      setUser({ ...form, allergiesArray });
+      setLoading(false);
       navigate("/diet");
     } catch (error) {
       console.warn(error?.message);
