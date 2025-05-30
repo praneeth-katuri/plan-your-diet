@@ -32,19 +32,25 @@ const login = async ({ email, password }) => {
     expiresIn: config.jwt.refreshExpiresIn,
   });
 
-  return { accessToken, refreshToken };
+  const { password: userPassword, id, ...safeUser } = user;
+
+  return { accessToken, refreshToken, user: safeUser };
 };
 
-const getAccessToken = (refreshToken) => {
+const getAccessToken = async (refreshToken) => {
   if (!refreshToken) throw new Error("No Token");
   try {
-    const { id } = jwt.verify(refreshToken, config.jwt.refreshSecret);
+    const decoded = jwt.verify(refreshToken, config.jwt.refreshSecret);
 
-    const accessToken = jwt.sign({ id }, config.jwt.accessSecret, {
+    const { password, id, ...user } = await prisma.user.findUnique({
+      where: { id: decoded.id },
+    });
+
+    const accessToken = jwt.sign({ id: decoded.id }, config.jwt.accessSecret, {
       expiresIn: config.jwt.accessExpiresIn || "15m",
     });
 
-    return accessToken;
+    return { accessToken, user };
   } catch (error) {
     throw new Error("Invalid or Expired refresh token");
   }
