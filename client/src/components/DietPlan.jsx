@@ -22,7 +22,13 @@ const DietPlan = () => {
   const generateNewPlan = async () => {
     try {
       setGenerating(true);
-      const res = await api.post("/diet/generate");
+      const res = await api.post(
+        "/diet/generate",
+        {},
+        {
+          timeout: 30000,
+        }
+      );
       setPlan(res.data.data); // use same format
     } catch (err) {
       alert("Failed to generate new plan");
