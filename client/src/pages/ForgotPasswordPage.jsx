@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./AuthPages.css";
 import ForgotBg from "../assets/images/auth_bg.png";
-import { ArrowLeft } from "lucide-react";
+import ToHome from "@/components/ToHome";
 
 const ForgotPasswordPage = () => {
   const handleSubmit = async (e) => {
@@ -14,10 +14,7 @@ const ForgotPasswordPage = () => {
       style={{ backgroundImage: `url(${ForgotBg})` }}
     >
       {/* Back Link in Top Left */}
-      <Link to="/" className="back-home-link">
-        <ArrowLeft size={18} className="mr-1" />
-        Home
-      </Link>
+      <ToHome />
       <div className="auth-overlay">
         <div className="auth-card">
           <h1>Forgot Password?</h1>
