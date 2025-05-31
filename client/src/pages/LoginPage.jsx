@@ -2,6 +2,7 @@ import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Spinner from "@/components/Spinner";
+import { Eye, EyeOff } from "lucide-react";
 import "./AuthPages.css";
 import LoginBg from "../assets/images/auth_bg.png";
 
@@ -9,6 +10,7 @@ const LoginPage = () => {
   const { login, isAuthenticated } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   if (isAuthenticated) return <Navigate to="/" />;
@@ -38,19 +40,31 @@ const LoginPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email Address"
+              className="mb-6"
               required
             />
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              required
-            />
+
+            {/* Password Field with Show/Hide */}
+            <div className="input-wrapper mb-6">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
+              />
+              <div
+                className="toggle-icon"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </div>
+            </div>
 
             <button type="submit" className="btn btn-primary">
               Login
             </button>
+
             <p className="forgot-link">
               <Link to="/forgot-password">Forgot Password?</Link>
             </p>
