@@ -19,7 +19,7 @@ Requirements:
 - Total around 2200 calories per day
 - Include calories + macros for each meal (protein, carbs, fat)
 - Ensure variety across the 7 days
-- Use "day1", "day2", ..., "day7" instead of weekday names
+- Use "day 1", "day 2", ..., "day 7" instead of weekday names
 
 Instructions:
 - Do not include explanations or comments
@@ -29,7 +29,7 @@ Instructions:
 {
   "days": [
     {
-      "day": "day1",
+      "day": "day 1",
       "meals": [
         { "name": "Meal name", "time": "breakfast", "calories": 450, "macros": {"protein": 25, "carbs": 40, "fat": 15} }
       ]
