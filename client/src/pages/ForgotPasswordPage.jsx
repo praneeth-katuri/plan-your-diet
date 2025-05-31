@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./AuthPages.css";
 import ForgotBg from "../assets/images/auth_bg.png";
+import { ArrowLeft } from "lucide-react";
 
 const ForgotPasswordPage = () => {
   const handleSubmit = async (e) => {
@@ -12,6 +13,11 @@ const ForgotPasswordPage = () => {
       className="auth-section"
       style={{ backgroundImage: `url(${ForgotBg})` }}
     >
+      {/* Back Link in Top Left */}
+      <Link to="/" className="back-home-link">
+        <ArrowLeft size={18} className="mr-1" />
+        Home
+      </Link>
       <div className="auth-overlay">
         <div className="auth-card">
           <h1>Forgot Password?</h1>
@@ -20,7 +26,12 @@ const ForgotPasswordPage = () => {
             your password.
           </p>
           <form onSubmit={handleSubmit}>
-            <input type="email" placeholder="Email Address" required />
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="mb-4"
+              required
+            />
             <button type="submit" className="btn btn-primary">
               Send Reset Link
             </button>
