@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/schema/profile.schema";
 import { useAuth } from "@/context/AuthContext";
+import ToHome from "@/components/ToHome";
 import api from "@/api/axios";
 import { Eye, EyeOff } from "lucide-react";
 import "./AuthPages.css";
@@ -45,6 +46,7 @@ const RegisterPage = () => {
       className="auth-section"
       style={{ backgroundImage: `url(${RegisterBg})` }}
     >
+      <ToHome />
       <div className="auth-overlay">
         <div className="auth-card">
           <h1>Create Your Account</h1>
