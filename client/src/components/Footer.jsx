@@ -3,46 +3,53 @@ import Pill from "../assets/images/medicine.png";
 import Yoga from "../assets/images/exercise.png";
 import Lemon from "../assets/images/orange.png";
 import Fruits from "../assets/images/fruits.png";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Mail, Phone, Facebook, Instagram, Twitter } from "lucide-react"; // Lucide icons
 
 function Footer() {
+  const location = useLocation();
+  const showFeatures =
+    location.pathname === "/" || location.pathname === "/contact";
   return (
     <footer className={styles.footer}>
       {/* Features Section */}
-      <div className={styles.features}>
-        <div className={styles.feature}>
-          <img src={Pill} alt="Best Option" />
-          <h3>The Best Option</h3>
-          <p>
-            Smart diet choices designed by top nutritionists for your
-            well-being.
-          </p>
+      {showFeatures && (
+        <div className={styles.features}>
+          <div className={styles.feature}>
+            <img src={Pill} alt="Best Option" />
+            <h3>The Best Option</h3>
+            <p>
+              Smart diet choices designed by top nutritionists for your
+              well-being.
+            </p>
+          </div>
+          <div className={styles.feature}>
+            <img src={Yoga} alt="Program Exercises" />
+            <h3>Program Exercises</h3>
+            <p>
+              Stay active and healthy with personalized exercise programs
+              integrated with your meal plans.
+            </p>
+          </div>
+          <div className={styles.feature}>
+            <img src={Fruits} alt="Why Fruits?" />
+            <h3>Why Fruits?</h3>
+            <p>
+              Learn how seasonal fruits boost your immunity, digestion, and
+              overall health naturally.
+            </p>
+          </div>
+          <div className={styles.feature}>
+            <img src={Lemon} alt="Healthy Eating" />
+            <h3>Healthy Eating</h3>
+            <p>
+              Explore healthy eating habits, meal timings, and food combinations
+              to live your best life.
+            </p>
+          </div>
         </div>
-        <div className={styles.feature}>
-          <img src={Yoga} alt="Program Exercises" />
-          <h3>Program Exercises</h3>
-          <p>
-            Stay active and healthy with personalized exercise programs
-            integrated with your meal plans.
-          </p>
-        </div>
-        <div className={styles.feature}>
-          <img src={Fruits} alt="Why Fruits?" />
-          <h3>Why Fruits?</h3>
-          <p>
-            Learn how seasonal fruits boost your immunity, digestion, and
-            overall health naturally.
-          </p>
-        </div>
-        <div className={styles.feature}>
-          <img src={Lemon} alt="Healthy Eating" />
-          <h3>Healthy Eating</h3>
-          <p>
-            Explore healthy eating habits, meal timings, and food combinations
-            to live your best life.
-          </p>
-        </div>
-      </div>
+      )}
 
       {/* Actual Footer Content */}
       <div className={styles.footerContent}>
@@ -59,16 +66,16 @@ function Footer() {
             <h4>Quick Links</h4>
             <ul>
               <li>
-                <a href="#">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="#">Meal Plans</a>
+                <Link href="/diet">Meal Plans</Link>
               </li>
               <li>
-                <a href="#">Food Tips</a>
+                <Link to="/food-facts">Food Tips</Link>
               </li>
               <li>
-                <a href="#">Contact Us</a>
+                <Link to="/contact">Contact Us</Link>
               </li>
             </ul>
           </div>
