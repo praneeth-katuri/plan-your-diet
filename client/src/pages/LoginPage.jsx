@@ -1,6 +1,7 @@
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import ToHome from "@/components/ToHome";
 import Spinner from "@/components/Spinner";
 import { Eye, EyeOff } from "lucide-react";
 import "./AuthPages.css";
@@ -30,6 +31,7 @@ const LoginPage = () => {
       className="auth-section"
       style={{ backgroundImage: `url(${LoginBg})` }}
     >
+      <ToHome />
       <div className="auth-overlay">
         <div className="auth-card">
           <h1>Welcome Back</h1>
