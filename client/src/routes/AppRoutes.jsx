@@ -6,10 +6,12 @@ import FoodFacts from "@/pages/FoodFacts";
 import LoginPage from "@/pages/LoginPage";
 import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
 import RegisterPage from "@/pages/RegisterPage";
-import ProfileSetup from "@/pages/ProfileSetup";
 import ProtectedRoute from "./ProtectedRoute";
 import DietPlan from "@/components/DietPlan";
 import ProfileEdit from "@/components/ProfileEdit";
+import ContactUs from "@/pages/ContactUs";
+import NotFound from "@/pages/NotFound";
+
 const AppRoutes = () => {
   const { isLoading } = useAuth();
 
@@ -36,28 +38,13 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/contact" element={<ContactUs />} />
       </Route>
-      <Route
-        path="/profile/setup"
-        element={
-          <ProtectedRoute>
-            <ProfileSetup />
-          </ProtectedRoute>
-        }
-      />
 
       <Route path="/login" element={<LoginPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/register" element={<RegisterPage />} />
-
-      <Route
-        path="/diet"
-        element={
-          <ProtectedRoute>
-            <DietPlan />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
