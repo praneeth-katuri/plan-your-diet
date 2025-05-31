@@ -33,7 +33,7 @@ const HeroSection = () => {
             </button>
           </div>
           <p className="hero-small-note">
-            Join 50,000+ users who trust PlanYourDiet for a healthier lifestyle.
+            Many users trust PlanYourDiet for a healthier lifestyle.
           </p>
         </div>
         <div className="hero-image">
