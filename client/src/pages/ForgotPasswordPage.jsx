@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./AuthPages.css";
-import ForgotBg from "../assets/images/auth_bg.png";
+import ForgotBg from "../assets/images/auth_bg.avif";
 import ToHome from "@/components/ToHome";
 
 const ForgotPasswordPage = () => {

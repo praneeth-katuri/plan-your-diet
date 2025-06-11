@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
-import ContactBg from "../assets/images/auth_bg.png"; // Optional background
+import ContactBg from "../assets/images/auth_bg.avif"; // Optional background
 
 const ContactUs = () => {
   return (
