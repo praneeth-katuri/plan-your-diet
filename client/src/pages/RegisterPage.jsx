@@ -8,7 +8,7 @@ import ToHome from "@/components/ToHome";
 import api from "@/api/axios";
 import { Eye, EyeOff } from "lucide-react";
 import "./AuthPages.css";
-import RegisterBg from "../assets/images/auth_bg.png";
+import RegisterBg from "../assets/images/auth_bg.avif";
 
 const RegisterPage = () => {
   const { isAuthenticated } = useAuth();

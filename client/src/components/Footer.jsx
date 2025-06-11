@@ -1,8 +1,8 @@
 import styles from "./Footer.module.css";
-import Pill from "../assets/images/medicine.png";
-import Yoga from "../assets/images/exercise.png";
-import Lemon from "../assets/images/orange.png";
-import Fruits from "../assets/images/fruits.png";
+import Pill from "../assets/images/medicine.avif";
+import Yoga from "../assets/images/exercise.avif";
+import Lemon from "../assets/images/orange.avif";
+import Fruits from "../assets/images/fruits.avif";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Mail, Phone, Facebook, Instagram, Twitter } from "lucide-react"; // Lucide icons

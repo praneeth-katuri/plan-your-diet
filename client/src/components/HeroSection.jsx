@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./HeroSection.css";
-import HeroImg from "../assets/images/hero_img.png";
+import HeroImg from "../assets/images/hero_img.avif";
 
 const HeroSection = () => {
   const navigate = useNavigate();
