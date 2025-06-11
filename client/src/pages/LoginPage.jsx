@@ -2,10 +2,9 @@ import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import ToHome from "@/components/ToHome";
-import Spinner from "@/components/Spinner";
 import { Eye, EyeOff } from "lucide-react";
 import "./AuthPages.css";
-import LoginBg from "../assets/images/auth_bg.png";
+import LoginBg from "../assets/images/auth_bg.avif";
 
 const LoginPage = () => {
   const { login, isAuthenticated } = useAuth();

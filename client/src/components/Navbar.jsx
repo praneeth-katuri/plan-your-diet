@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User } from "lucide-react";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.avif";
 import { useAuth } from "@/context/AuthContext";
 
 const Navbar = () => {
