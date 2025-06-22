@@ -20,6 +20,19 @@ export default defineConfig({
       "@": new URL("./src", import.meta.url).pathname,
     },
   },
+  server: {
+    port: 5174,
+    proxy: {
+      "/api": {
+        target: "http://localhost:5050",
+        changeOrigin: true,
+      },
+    },
+    fs: {
+      // 👇 to get shared folder in the root - vite workaround
+      allow: [".."],
+    },
+  },
   build: {
     sourcemap: false,
     rollupOptions: {
