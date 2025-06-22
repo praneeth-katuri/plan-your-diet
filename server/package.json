@@ -1,44 +1,40 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "PlanYourDiet backend",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon",
-    "start": "node server.js"
-  },
-  "keywords": [
-    "nodejs",
-    "express",
-    "api",
-    "mvc",
-    "backend"
-  ],
-  "author": "Praneeth Katuri",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/praneeth-katuri/PlanYourDiet"
-  },
-  "bugs": {
-    "url": "https://github.com/praneeth-katuri/PlanYourDiet/issues"
-  },
-  "homepage": "",
-  "engines": {
-    "node": ">=22.15.0"
-  },
-  "dependencies": {
-    "@prisma/client": "^6.8.2",
-    "bcryptjs": "^3.0.2",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "together-ai": "^0.16.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10",
-    "prisma": "^6.8.2"
-  }
+    "name": "server",
+    "version": "1.0.0",
+    "description": "PlanYourDiet backend",
+    "main": "server.js",
+    "scripts": {
+        "dev": "nodemon",
+        "start": "npx prisma generate && node server.js"
+    },
+    "keywords": [
+        "nodejs",
+        "express",
+        "api",
+        "mvc",
+        "backend"
+    ],
+    "author": "Praneeth Katuri",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/praneeth-katuri/PlanYourDiet"
+    },
+    "bugs": {
+        "url": "https://github.com/praneeth-katuri/PlanYourDiet/issues"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.10.1",
+        "bcrypt": "^6.0.0",
+        "cookie-parser": "^1.4.7",
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0",
+        "express": "^5.1.0",
+        "jsonwebtoken": "^9.0.2",
+        "together-ai": "^0.16.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10",
+        "prisma": "^6.10.1"
+    }
 }
