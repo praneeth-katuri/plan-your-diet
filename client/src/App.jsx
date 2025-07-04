@@ -1,6 +1,7 @@
 import AppRoutes from "./routes/AppRoutes";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       />
       <ScrollToTop />
       <AppRoutes />
+      <Analytics />
     </>
   );
 }
