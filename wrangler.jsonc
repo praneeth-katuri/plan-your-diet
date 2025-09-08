@@ -1,6 +1,6 @@
 {
   "name": "plan-your-diet",
-  "compatibility_date": "2025-09-09",
+  "compatibility_date": "2025-09-08",
   "main": "worker/index.js",
   "assets": {
     "directory": "./client/dist",
