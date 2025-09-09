@@ -1,6 +1,9 @@
 {
   "name": "plan-your-diet",
   "compatibility_date": "2025-09-08",
+  "vars": {
+    "BACKEND_URL": "https://plan-your-diet-backend.onrender.com"
+  },
   "main": "worker/index.js",
   "assets": {
     "directory": "./client/dist",
