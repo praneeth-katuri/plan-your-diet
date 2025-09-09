@@ -3,6 +3,9 @@
   "workers_dev": false,
   "compatibility_date": "2025-09-08",
   "main": "worker/index.js",
+  "vars": {
+    "BACKEND_URL": "https://plan-your-diet-backend.onrender.com"
+  },
   "placement": {
     "mode": "smart"
   },
